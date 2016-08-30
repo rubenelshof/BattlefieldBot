@@ -1,5 +1,5 @@
 @echo off
-title Discord Bot
-cd "C:\Users\RE1992\Projects\Discord bot"
+title BattlefieldBot
+cd "C:\Users\RE1992\Projects\BattlefieldBot"
 node bot.js
 pause
