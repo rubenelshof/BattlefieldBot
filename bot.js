@@ -6,13 +6,7 @@ var bot = new Discord.Client();
 const util = require('util')
 console.log(util.inspect(Discord, false, null))
 
-var connection = mysql.createConnection({
-  host: "192.168.2.4",
-  user: "BFBot",
-  password: "cCT7sMeh",
-  database: "bfbot"
-});
-connection.connect();
+var db = require('./db.js');
 
 bot.on("ready", function() {
   console.log("Bot online and ready!");
@@ -90,8 +84,15 @@ bot.on("message", function(message) {
   }
 });
 
+//user command. create by admin
+
+// jokes
 //yomomma
 bot.on("message", function(message) {
   if (!message.channel.isPrivate) {
-    if (message.content === ("!yomomma")) {getJSON("http://api.yomomma.info/", function(err, res, callback) {bot.sendMessage(message, (res.joke));});}}});
+    if (message.content === ("!yomomma")) {getJSON("http://api.yomomma.info/", function(err, res, callback) {bot.sendMessage(message, (res.joke));});}
+  }
+});
+
+//token
 bot.loginWithToken("MjIwMDY0ODQ1Mjg5MDk1MTY4.Cqa23g.xS-9LDyNYQiQczNN8AGNCTCavUw");
