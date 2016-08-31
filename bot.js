@@ -6,7 +6,6 @@ var bot = new Discord.Client();
 const http = require('http');
 const request = require('request');
 const getJSON = require('get-json');
-var parseString = require('xml2js').parseString;
 
 //debug
 const util = require('util')
