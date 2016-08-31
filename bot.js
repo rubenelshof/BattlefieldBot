@@ -66,17 +66,16 @@ bot.on("message", function(message) {
     var name = content.split(" ");
     var playername = name[1];
 
-    //apiurl
-    var bf4statsapi = "http://api.bf4stats.com/api/playerInfo";
-    var apiurl = bf4statsapi + "?plat=pc&name=" + playername + "&output=json";
+    //api
+    var bf4statsapi = "http://api.bf4stats.com/api/playerInfo" + "?plat=pc&name=" + playername + "&output=json";
 
     //url
     var bf4stats = "http://bf4stats.com/pc/";
     var url = bf4stats + playername;
 
-    if (message.content === ("!rank " + playername)) {getJSON(apiurl, function(err, res, callback) {bot.sendMessage(message, (res.stats.rank));});}
-    if (message.content === ("!skill " + playername)) {getJSON(apiurl, function(err, res, callback) {bot.sendMessage(message, (res.stats.skill));});}
-    if (message.content === ("!kd " + playername)) {getJSON(apiurl, function(err, res, callback) {bot.sendMessage(message, (res.stats.extra.kdr).toFixed(2));});}
+    if (message.content === ("!rank " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your rank is " **(res.stats.rank)**);});}
+    if (message.content === ("!skill " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your skill score is " **(res.stats.skill)**);});}
+    if (message.content === ("!kd " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your K/D is " **(res.stats.extra.kdr).toFixed(2)**);});}
   } else {
     if (message.content === "!stats") {
       bot.sendMessage(message, "Hello, Your on **PM**");
