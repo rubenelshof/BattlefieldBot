@@ -73,9 +73,9 @@ bot.on("message", function(message) {
     var bf4stats = "http://bf4stats.com/pc/";
     var url = bf4stats + playername;
 
-    if (message.content === ("!rank " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your rank is " **(res.stats.rank)**);});}
-    if (message.content === ("!skill " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your skill score is " **(res.stats.skill)**);});}
-    if (message.content === ("!kd " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your K/D is " **(res.stats.extra.kdr).toFixed(2)**);});}
+    if (message.content === ("!rank " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your rank is **" + (res.stats.rank) + "**");});}
+    if (message.content === ("!skill " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your skill score is **" + (res.stats.skill) + "**");});}
+    if (message.content === ("!kd " + playername)) {getJSON(bf4statsapi, function(err, res, callback) {bot.sendMessage(message, "Your K/D is **" + (res.stats.extra.kdr).toFixed(2) + "**");});}
   } else {
     if (message.content === "!stats") {
       bot.sendMessage(message, "Hello, Your on **PM**");
