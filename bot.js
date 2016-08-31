@@ -1,8 +1,8 @@
 var Discord = require("discord.js");
-const mysql = require('mysql');
 var bot = new Discord.Client();
 
 //required modules
+const mysql = require('mysql');
 const http = require('http');
 const request = require('request');
 const getJSON = require('get-json');
@@ -72,7 +72,7 @@ bot.on("message", function(message) {
     var playername = name[1];
 
     //api
-    var bfbc2statsapi = "http://api.bfbcs.com/api/pc?players=" + playername + "&fields=all";
+    var bfbc2statsapi = "http://api.bfbcs.com/api/pc?players=" + playername + "&fields=general";
 
     //url
     var bfbc2stats = "http://bfbcs.com/";
@@ -97,7 +97,7 @@ bot.on("message", function(message) {
     var playername = name[1];
 
     //api
-    var bf3statsapi = "http://api.bf3stats.com/pc/player/player=" + playername + "&opt=all";
+    var bf3statsapi = "http://api.bf3stats.com/pc/player/player=" + playername + "&opt=clear,rank,global";
 
     //url
     var bf3stats = "http://bf3stats.com/pc/";
@@ -122,7 +122,7 @@ bot.on("message", function(message) {
     var playername = name[1];
 
     //api
-    var bf4statsapi = "http://api.bf4stats.com/api/playerInfo" + "?plat=pc&name=" + playername + "&output=json";
+    var bf4statsapi = "http://api.bf4stats.com/api/playerInfo?plat=pc&name=" + playername + "&opt=stats,extra";
 
     //url
     var bf4stats = "http://bf4stats.com/pc/";
