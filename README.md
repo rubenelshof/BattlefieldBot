@@ -2,7 +2,7 @@
 
 A Discord bot which shows Battlefield stats using the API from BF4Stats.
 
-Commandlist
+Commandlist<br />
 !bfbc2rank [Playername] = Players rank in Battlefield Bad Company 2<br />
 !bfbc2skill [Playername] = Players skill in Battlefield Bad Company 2<br />
 !bfbc2kd [Playername] = Players kill/death ratio in Battlefield Bad Company 2<br />
