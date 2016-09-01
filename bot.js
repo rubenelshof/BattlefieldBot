@@ -19,8 +19,7 @@ bot.on("ready", function () {
   console.log("Connected!");
   console.log("Logged in as: ");
   console.log(bot.user.username);
-  var botgames = ["Battlefield Stats", "test"];
-  bot.setPlayingGame(botgames);
+  bot.setPlayingGame("Battlefield Stats");
 });
 
 //uptime
