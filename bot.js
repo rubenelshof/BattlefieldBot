@@ -88,9 +88,35 @@ bot.on("message", function (message) {
     var bfbc2stats = "http://bfbcs.com/";
     var url = bfbc2stats + playername;
 
-    if (message.content === ("!bfbc2rank " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res["players"][0]["rank"] + "**");};});}
-    if (message.content === ("!bfbc2skill " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res["players"][0]["elo"].toFixed(0) + "**");};});}
-    if (message.content === ("!bfbc2kd " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { var kills = (res["players"][0]["kills"]); var deaths = (res["players"][0]["deaths"]); bot.sendMessage(message, "Your K/D is **" + (kills / deaths).toFixed(2) + "**");};});}
+    if (message.content === ("!bfbc2rank " + playername)) {
+      getJSON(bfbc2statsapi, function (err, res) {
+        if (res.found === 0) {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your rank is **" + res["players"][0]["rank"] + "**");
+        };
+      });
+    }
+    if (message.content === ("!bfbc2skill " + playername)) {
+      getJSON(bfbc2statsapi, function (err, res) {
+        if (res.found === 0) {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your skill score is **" + res["players"][0]["elo"].toFixed(0) + "**");
+        };
+      });
+    }
+    if (message.content === ("!bfbc2kd " + playername)) {
+      getJSON(bfbc2statsapi, function (err, res) {
+        if (res.found === 0) {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          var kills = (res["players"][0]["kills"]);
+          var deaths = (res["players"][0]["deaths"]);
+          bot.sendMessage(message, "Your K/D is **" + (kills / deaths).toFixed(2) + "**");
+        };
+      });
+    }
   }
 });
 
@@ -109,9 +135,33 @@ bot.on("message", function (message) {
     var bf3stats = "http://bf3stats.com/pc/";
     var url = bf3stats + playername;
 
-    if (message.content === ("!bf3rank " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res.stats.rank.nr + "**");};});}
-    if (message.content === ("!bf3skill " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");};});}
-    if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your K/D is **" + res.stats.global.elo_games.toFixed(0) + "**");};});}
+    if (message.content === ("!bf3rank " + playername)) {
+      getJSON(bf3statsapi, function (err, res) {
+        if (res.status == "notfound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your rank is **" + res.stats.rank.nr + "**");
+        };
+      });
+    }
+    if (message.content === ("!bf3skill " + playername)) {
+      getJSON(bf3statsapi, function (err, res) {
+        if (res.status == "notfound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");
+        };
+      });
+    }
+    if (message.content === ("!bf3kd " + playername)) {
+      getJSON(bf3statsapi, function (err, res) {
+        if (res.status == "notfound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your K/D is **" + res.stats.global.elo_games.toFixed(0) + "**");
+        };
+      });
+    }
   }
 });
 
@@ -130,9 +180,33 @@ bot.on("message", function (message) {
     var bf4stats = "http://bf4stats.com/pc/";
     var url = bf4stats + playername;
 
-    if (message.content === ("!bf4rank " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res.stats.rank + "**");};});}
-    if (message.content === ("!bf4skill " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res.stats.skill + "**");};});}
-    if (message.content === ("!bf4kd " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your K/D is **" + res.stats.extra.kdr.toFixed(2) + "**");};});}
+    if (message.content === ("!bf4rank " + playername)) {
+      getJSON(bf4statsapi, function (err, res) {
+        if (res.error == "notFound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your rank is **" + res.stats.rank + "**");
+        };
+      });
+    }
+    if (message.content === ("!bf4skill " + playername)) {
+      getJSON(bf4statsapi, function (err, res) {
+        if (res.error == "notfound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your skill score is **" + res.stats.skill + "**");
+        };
+      });
+    }
+    if (message.content === ("!bf4kd " + playername)) {
+      getJSON(bf4statsapi, function (err, res) {
+        if (res.error == "notFound") {
+          bot.sendMessage(message, "Player not identified");
+        } else {
+          bot.sendMessage(message, "Your K/D is **" + res.stats.extra.kdr.toFixed(2) + "**");
+        };
+      });
+    }
   }
 });
 
