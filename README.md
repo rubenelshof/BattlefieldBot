@@ -12,3 +12,5 @@ Commandlist<br />
 !bf4rank [Playername] = Players rank in Battlefield 4<br />
 !bf4skill [Playername] = Players skill in Battlefield 4<br />
 !bf4kd [Playername] = Players kill/death ratio in Battlefield 4<br />
+
+Credits to P-Stats Network for providing the API.

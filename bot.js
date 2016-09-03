@@ -57,7 +57,18 @@ bot.on("serverDeleted", function (server) {
 bot.on("message", function (message) {
   if (!message.channel.isPrivate) {
     if (message.content === "!bfbothelp") {
-      bot.sendMessage(message, "Hello, Your on server **" + message.channel.server.name + "**");
+      bot.sendMessage(message,
+        "\n**Commandlist**\n"+
+        '  • !bfbc2rank [Playername] = Players rank in Battlefield Bad Company 2\n' +
+        '  • !bfbc2skill [Playername] = Players skill in Battlefield Bad Company 2\n' +
+        '  • !bfbc2kd [Playername] = Players kill/death ratio in Battlefield Bad Company 2<\n' +
+        '  • !bf3rank [Playername] = Players rank in Battlefield 3\n' +
+        '  • !bf3skill [Playername] = Players skill in Battlefield 3\n' +
+        '  • !bf3kd [Playername] = Players kill/death ratio in Battlefield 3\n' +
+        '  • !bf4rank [Playername] = Players rank in Battlefield 4\n' +
+        '  • !bf4skill [Playername] = Players skill in Battlefield 4\n' +
+        '  • !bf4kd [Playername] = Players kill/death ratio in Battlefield 4\n'
+      );
     }
   }
 });
