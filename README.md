@@ -5,15 +5,9 @@
 </div>
 
 ## About
-A Discord bot which shows Battlefield stats using the API from BF4Stats and Trackernetwork.
-Show of your skill to your friends on Discord or show your legacy in Battlefield.
-<<<<<<< HEAD
-From Battlefield Bad Company 2 to Battlefield 1.a
-=======
-From Battlefield Bad Company 2 to Battlefield 1.
-
-## Usage
->>>>>>> 0dff83ca34d545eeb4d1b1961073e7fd026e93e4
+A Discord bot which shows Battlefield stats using the API from BF4Stats and Trackernetwork.<br />
+Show of your skill to your friends on Discord or show your legacy in Battlefield.<br />
+From Battlefield Bad Company 2 to Battlefield 1.<br />
 
 ## Usage
 Commandlist<br />
