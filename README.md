@@ -10,7 +10,6 @@ Show of your skill to your friends on Discord or show your legacy in Battlefield
 From Battlefield Bad Company 2 to Battlefield 1.
 
 ## Usage
-
 Commandlist<br />
 !bfbc2rank [Playername] = Players rank in Battlefield Bad Company 2<br />
 !bfbc2skill [Playername] = Players skill in Battlefield Bad Company 2<br />
