@@ -7,7 +7,7 @@
 ## About
 A Discord bot which shows Battlefield stats using the API from BF4Stats and Trackernetwork.
 Show of your skill to your friends on Discord or show your legacy in Battlefield.
-From Battlefield Bad Company 2 to Battlefield 1.
+From Battlefield Bad Company 2 to Battlefield 1.a
 
 ## Usage
 Commandlist<br />
