@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="https://battlefieldbot.rubenelshof.nl"><img src="http://battlefieldbot.rubenelshof.nl/images/logo.png"/></a>
+    <a href="http://battlefieldbot.rubenelshof.nl"><img src="http://battlefieldbot.rubenelshof.nl/images/logo.png"/></a>
   </p>
 </div>
 
