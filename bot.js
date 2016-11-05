@@ -58,9 +58,19 @@ bot.on("message", function (message) {
   if (!message.channel.dmchannel) {
     if (message.content === "!bfbothelp") {
       message.channel.sendMessage(
-        "Your skill score is **" + info.result.skill + "** \r" + "More stats at " + url + "\r" + bftracker
-
-
+        "Commandlist \r" +
+        "!bfbc2rank [Playername] = Players rank in Battlefield Bad Company 2 \r" +
+        "!bfbc2skill [Playername] = Players skill in Battlefield Bad Company 2 \r" +
+        "!bfbc2kd [Playername] = Players kill/death ratio in Battlefield Bad Company 2 \r" +
+        "!bf3rank [Playername] = Players rank in Battlefield 3 \r" +
+        "!bf3skill [Playername] = Players skill in Battlefield 3 \r" +
+        "!bf3kd [Playername] = Players kill/death ratio in Battlefield 3 \r" +
+        "!bf4rank [Playername] = Players rank in Battlefield 4 \r" +
+        "!bf4skill [Playername] = Players skill in Battlefield 4 \r" +
+        "!bf4kd [Playername] = Players kill/death ratio in Battlefield 4 \r" +
+        "!bf1rank [Playername] = Players rank in Battlefield 1 \r" +
+        "!bf1skill [Playername] = Players skill in Battlefield 1 \r" +
+        "!bf1kd [Playername] = Players kill/death ratio in Battlefield 1"
       );
     }
   }
