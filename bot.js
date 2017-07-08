@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-
+//test 
 //required modules
 const mysql = require("mysql");
 const request = require("request");
