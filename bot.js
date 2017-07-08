@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-//test 
+
 //required modules
 const mysql = require("mysql");
 const request = require("request");
@@ -114,7 +114,7 @@ bot.on("message", function (message) {
 
     if (message.content === ("!bf3rank " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your rank is **" + res.stats.rank.nr + "**");};});}
     if (message.content === ("!bf3skill " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");};});}
-    if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your K/D is **" + res.stats.global.elo_games.toFixed(0) + "**");};});}
+    if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your K/D is **" + res.stats.global.elo_games.toLocaleString() + "**");};});}
   }
 });
 
