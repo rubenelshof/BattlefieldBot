@@ -116,7 +116,7 @@ bot.on("message", function (message) {
     if (message.content === ("!bf3skill " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");};});}
     if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your K/D is **" + res.stats.global.elo_games.toLocaleString() + "**");};});}
   }
-});
+}); 
 
 //bf4stats
 bot.on("message", function (message) {
