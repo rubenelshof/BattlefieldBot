@@ -3,7 +3,6 @@ var bot = new Discord.Client();
 
 //required modules
 const mysql = require("mysql");
-const http = require("http");
 const request = require("request");
 const getJSON = require("get-json");
 
@@ -19,20 +18,8 @@ bot.on("ready", function () {
   console.log("Connected!");
   console.log("Logged in as: ");
   console.log(bot.user.username);
-  bot.setPlayingGame("Battlefield Stats");
-});
-
-//uptime
-bot.on("message", function (message) {
-  if (!message.channel.isPrivate) {
-    if (message.content === "!bfbotuptime") {
-      bot.sendMessage(message, "Hello, Your on server **" + message.channel.server.name + "**");
-    }
-  } else {
-    if (message.content === "!server") {
-      bot.sendMessage(message, "Hello, Your on **PM**");
-    }
-  }
+  bot.user.setStatus("online");
+  bot.user.setGame("Battlefield Stats");
 });
 
 //dbservercreate
@@ -68,16 +55,30 @@ bot.on("serverDeleted", function (server) {
 
 //help
 bot.on("message", function (message) {
-  if (!message.channel.isPrivate) {
+  if (!message.channel.dmchannel) {
     if (message.content === "!bfbothelp") {
-      bot.sendMessage(message, "Hello, Your on server **" + message.channel.server.name + "**");
+      message.channel.sendMessage(
+        "Commandlist \r" +
+        "!bfbc2rank [Playername] = Players rank in Battlefield Bad Company 2 \r" +
+        "!bfbc2skill [Playername] = Players skill in Battlefield Bad Company 2 \r" +
+        "!bfbc2kd [Playername] = Players kill/death ratio in Battlefield Bad Company 2 \r" +
+        "!bf3rank [Playername] = Players rank in Battlefield 3 \r" +
+        "!bf3skill [Playername] = Players skill in Battlefield 3 \r" +
+        "!bf3kd [Playername] = Players kill/death ratio in Battlefield 3 \r" +
+        "!bf4rank [Playername] = Players rank in Battlefield 4 \r" +
+        "!bf4skill [Playername] = Players skill in Battlefield 4 \r" +
+        "!bf4kd [Playername] = Players kill/death ratio in Battlefield 4 \r" +
+        "!bf1rank [Playername] = Players rank in Battlefield 1 \r" +
+        "!bf1skill [Playername] = Players skill in Battlefield 1 \r" +
+        "!bf1kd [Playername] = Players kill/death ratio in Battlefield 1"
+      );
     }
   }
 });
 
 //bfbc2stats
 bot.on("message", function (message) {
-  if (!message.channel.isPrivate) {
+  if (!message.channel.dmchannel) {
     //get content
     var content = message.content;
     var name = content.split(" ");
@@ -90,9 +91,9 @@ bot.on("message", function (message) {
     var bfbc2stats = "http://bfbcs.com/";
     var url = bfbc2stats + playername;
 
-    if (message.content === ("!bfbc2rank " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res["players"][0]["rank"] + "**");};});}
-    if (message.content === ("!bfbc2skill " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res["players"][0]["elo"].toFixed(0) + "**");};});}
-    if (message.content === ("!bfbc2kd " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { bot.sendMessage(message, "Player not identified"); } else { var kills = (res["players"][0]["kills"]); var deaths = (res["players"][0]["deaths"]); bot.sendMessage(message, "Your K/D is **" + (kills / deaths).toFixed(2) + "**");};});}
+    if (message.content === ("!bfbc2rank " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your rank is **" + res["players"][0]["rank"] + "**");};});}
+    if (message.content === ("!bfbc2skill " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your skill score is **" + res["players"][0]["elo"].toFixed(0) + "**");};});}
+    if (message.content === ("!bfbc2kd " + playername)) { getJSON(bfbc2statsapi, function (err, res) { if (res.found === 0) { message.channel.sendMessage("Player not identified"); } else { var kills = (res["players"][0]["kills"]); var deaths = (res["players"][0]["deaths"]); message.channel.sendMessage("Your K/D is **" + (kills / deaths).toFixed(2) + "**");};});}
   }
 });
 
@@ -111,9 +112,9 @@ bot.on("message", function (message) {
     var bf3stats = "http://bf3stats.com/pc/";
     var url = bf3stats + playername;
 
-    if (message.content === ("!bf3rank " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res.stats.rank.nr + "**");};});}
-    if (message.content === ("!bf3skill " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");};});}
-    if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your K/D is **" + res.stats.global.elo_games.toFixed(0) + "**");};});}
+    if (message.content === ("!bf3rank " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your rank is **" + res.stats.rank.nr + "**");};});}
+    if (message.content === ("!bf3skill " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your skill score is **" + res.stats.global.elo.toFixed(0) + "**");};});}
+    if (message.content === ("!bf3kd " + playername)) { getJSON(bf3statsapi, function (err, res) { if (res.status == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your K/D is **" + res.stats.global.elo_games.toFixed(0) + "**");};});}
   }
 });
 
@@ -132,9 +133,9 @@ bot.on("message", function (message) {
     var bf4stats = "http://bf4stats.com/pc/";
     var url = bf4stats + playername;
 
-    if (message.content === ("!bf4rank " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your rank is **" + res.stats.rank + "**");};});}
-    if (message.content === ("!bf4skill " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notfound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your skill score is **" + res.stats.skill + "**");};});}
-    if (message.content === ("!bf4kd " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { bot.sendMessage(message, "Player not identified"); } else { bot.sendMessage(message, "Your K/D is **" + res.stats.extra.kdr.toFixed(2) + "**");};});}
+    if (message.content === ("!bf4rank " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your rank is **" + res.stats.rank + "**");};});}
+    if (message.content === ("!bf4skill " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notfound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your skill score is **" + res.stats.skill + "**");};});}
+    if (message.content === ("!bf4kd " + playername)) { getJSON(bf4statsapi, function (err, res) { if (res.error == "notFound") { message.channel.sendMessage("Player not identified"); } else { message.channel.sendMessage("Your K/D is **" + res.stats.extra.kdr.toFixed(2) + "**");};});}
   }
 });
 
@@ -147,26 +148,52 @@ bot.on("message", function (message) {
     var playername = name[1];
 
     //api
-    var bf1statsapi = "http://api.bf1stats.com/api/playerInfo?plat=pc&name=" + playername + "&opt=stats,extra&callback=?";
+    var bftoken = require('./bftoken.js');
+    var bf1basicstats = {url: "https://battlefieldtracker.com/bf1/api/Stats/BasicStats?platform=3&displayName=" + playername + "&game=tunguska",headers: {'trn-api-key': bftoken}};
+    var bf1detailedstats = {url: "https://battlefieldtracker.com/bf1/api/Stats/DetailedStats?platform=3&displayName=" + playername + "&game=tunguska",headers: {'trn-api-key': bftoken}};
 
     //url
-    var bf1stats = "http://bf4stats.com/pc/";
+    var bf1stats = "https://battlefieldtracker.com/bf1/profile/pc/";
     var url = bf1stats + playername;
 
-    if (message.content === ("!bf1rank " + playername)) {getJSON(bf1statsapi, function (err, res) {bot.sendMessage(message, "Your rank is **" + res.stats.rank + "**");});}
-    if (message.content === ("!bf1skill " + playername)) {getJSON(bf1statsapi, function (err, res) {bot.sendMessage(message, "Your skill score is **" + res.stats.skill + "**");});}
-    if (message.content === ("!bf1kd " + playername)) {getJSON(bf1statsapi, function (err, res) {bot.sendMessage(message, "Your K/D is **" + res.stats.extra.kdr.toFixed(2) + "**");});}
-  } else {
-    if (message.content === "!stats") {
-      bot.sendMessage(message, "Hello, Your on **PM**");
-    }
+    //powered by
+    var bftracker = "Powered by Tracker Network"
+
+    if (message.content === ("!bf1rank " + playername)) {
+      request(bf1basicstats, function (err, res, body) {
+        if (!err && res.statusCode == 200) {
+          var info = JSON.parse(body);
+          message.channel.sendMessage("Your rank is **" + info.result.rank.number + "** \r" + "More stats at " + url + "\r" + bftracker);
+        } else {
+          message.channel.sendMessage("Player not identified");
+        }
+      });
+    };
+
+    if (message.content === ("!bf1skill " + playername)) {
+      request(bf1basicstats, function (err, res, body) {
+        if (!err && res.statusCode == 200) {
+          var info = JSON.parse(body);
+          message.channel.sendMessage("Your skill score is **" + info.result.skill + "** \r" + "More stats at " + url + "\r" + bftracker);
+        } else {
+          message.channel.sendMessage("Player not identified");
+        }
+      });
+    };
+
+    if (message.content === ("!bf1kd " + playername)) {
+      request(bf1detailedstats, function (err, res, body) {
+        if (!err && res.statusCode == 200) {
+          var info = JSON.parse(body);
+          message.channel.sendMessage("Your K/D is **" + info.result.kdr + "** \r" + "More stats at " + url + "\r" + bftracker);
+        } else {
+          message.channel.sendMessage("Player not identified");
+        }
+      });
+    };
   }
 });
 
-//user command. create by admin
-
-
-
 //token
 var token = require('./token.js');
-bot.loginWithToken(token);
+bot.login(token);
